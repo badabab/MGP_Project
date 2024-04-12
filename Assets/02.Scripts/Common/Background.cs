@@ -2,23 +2,26 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    public Material Material;
-    public float ScrollSpeed = 0.2f;
-    public bool IsRight = true;
     public GameObject Player;
+    public Material Material;
+    public float ScrollSpeed = 0.05f;
+    private float _fastScrollSpeed;
 
-    private void Update()
+    private void Start()
     {
-        IsRight = Player.GetComponent<PlayerMove>().LookingRight;
+        _fastScrollSpeed = ScrollSpeed * 2;
+    }
+    private void Update()
+    {     
         Vector2 dir;
-        if (IsRight)
+        dir = Vector2.right;
+        if (Player.transform.position.x == Player.GetComponent<PlayerMove>().MaxX)
         {
-            dir = Vector2.right;
+            Material.mainTextureOffset += dir * _fastScrollSpeed * Time.deltaTime;
         }
         else
         {
-            dir = Vector2.left;
-        }
-        Material.mainTextureOffset += dir * ScrollSpeed * Time.deltaTime;
+            Material.mainTextureOffset += dir * ScrollSpeed * Time.deltaTime;
+        }      
     }
 }

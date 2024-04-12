@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2854375543000980900}
   - component: {fileID: 6873373130504796930}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,9 +114,11 @@ GameObject:
   - component: {fileID: 5883297114878755009}
   - component: {fileID: 2380147407856701656}
   - component: {fileID: 781563956103552532}
+  - component: {fileID: -6064801049876574936}
+  - component: {fileID: -3650798021118235268}
   m_Layer: 0
   m_Name: Enemy4
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 2958702533109706899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: -0.5, z: 0}
   m_LocalScale: {x: -0.12, y: 0.15, z: 0.12}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -239,7 +241,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -255,6 +257,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 3.5}
   m_EdgeRadius: 0
+--- !u!50 &-6064801049876574936
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958702533109706899}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-3650798021118235268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958702533109706899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5fad1bc432d184fb794e8cefbe412d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyType: 3
+  HP_Slider: {fileID: 333055889259091997}
+  HP: 0
+  MaxHP: 10
+  Speed: 0.3
+  RushSpeed: 0.5
+  Damage: 5
 --- !u!1 &3497386741111242461
 GameObject:
   m_ObjectHideFlags: 0
