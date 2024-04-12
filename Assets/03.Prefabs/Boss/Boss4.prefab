@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 5935512055795753301}
   - component: {fileID: 839048553404792435}
   - component: {fileID: 352110527556180026}
+  - component: {fileID: -870337082895004644}
   m_Layer: 0
   m_Name: Boss4
   m_TagString: Boss
@@ -401,7 +402,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &352110527556180026
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -447,6 +448,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 4.5}
   m_EdgeRadius: 0
+--- !u!114 &-870337082895004644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918277868250126051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4fd2f2c9591b443b985c0b45b3fae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossType: 3
+  HP_Slider: {fileID: 0}
+  HP: 0
+  MaxHP: 30
+  Damage: 10
+  jumpForce: 7
+  moveSpeed: 2
+  playerTransform: {fileID: 0}
+  followDistance: 10
+  WalkJumpTime: 3
 --- !u!1 &6753225198700351537
 GameObject:
   m_ObjectHideFlags: 0

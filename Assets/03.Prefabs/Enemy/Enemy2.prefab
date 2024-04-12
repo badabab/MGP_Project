@@ -287,8 +287,8 @@ GameObject:
   - component: {fileID: 6290179499429967717}
   - component: {fileID: 721999959059927802}
   - component: {fileID: 2449861133453123709}
-  - component: {fileID: -3069682067276910519}
   - component: {fileID: 2039448037393431733}
+  - component: {fileID: -3069682067276910519}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -430,25 +430,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 3.5}
   m_EdgeRadius: 0
---- !u!114 &-3069682067276910519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6148693154986427935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5fad1bc432d184fb794e8cefbe412d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyType: 1
-  HP_Slider: {fileID: 7737883870522198527}
-  HP: 0
-  MaxHP: 10
-  Speed: 0.3
-  RushSpeed: 0.5
-  Damage: 5
 --- !u!50 &2039448037393431733
 Rigidbody2D:
   serializedVersion: 4
@@ -476,6 +457,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3069682067276910519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148693154986427935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5fad1bc432d184fb794e8cefbe412d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyType: 1
+  HP_Slider: {fileID: 7737883870522198527}
+  HP: 0
+  MaxHP: 10
+  Speed: 0.3
+  RushSpeed: 0.5
+  Damage: 5
 --- !u!1 &6198995864477045158
 GameObject:
   m_ObjectHideFlags: 0
