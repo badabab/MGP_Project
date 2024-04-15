@@ -467,9 +467,11 @@ MonoBehaviour:
   Damage: 10
   jumpForce: 7
   moveSpeed: 2
-  playerTransform: {fileID: 0}
   followDistance: 10
   WalkJumpTime: 3
+  KnockbackForce: 0.5
+  KnockbackDuration: 0.5
+  FlickerDuration: 0.1
 --- !u!1 &6753225198700351537
 GameObject:
   m_ObjectHideFlags: 0

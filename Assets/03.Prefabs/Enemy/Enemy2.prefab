@@ -469,13 +469,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5fad1bc432d184fb794e8cefbe412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyType: 1
+  EnemyType: 0
   HP_Slider: {fileID: 7737883870522198527}
   HP: 0
   MaxHP: 10
   Speed: 0.3
   RushSpeed: 0.5
   Damage: 5
+  KnockbackForce: 0.5
+  KnockbackDuration: 0.5
+  FlickerDuration: 0.1
 --- !u!1 &6198995864477045158
 GameObject:
   m_ObjectHideFlags: 0
