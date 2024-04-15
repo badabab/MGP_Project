@@ -33,6 +33,10 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (HP <= 0)
+        {
+            Death();
+        }
         if (_isGround)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -46,6 +50,10 @@ public class Boss : MonoBehaviour
         }
     }
 
+    private void Death()
+    {
+        Destroy(gameObject);
+    }
 
     private void WalkJumpType()
     {
@@ -112,5 +120,10 @@ public class Boss : MonoBehaviour
     private void Refresh()
     {
         HP_Slider.value = HP / (float)MaxHP;
+    }
+    public void Damaged(int damage)
+    {
+        HP -= damage;
+        Refresh();
     }
 }

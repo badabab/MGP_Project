@@ -27,7 +27,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector2.left * Speed * Time.deltaTime);
+        transform.Translate(Vector2.left * Speed * Time.deltaTime);       
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,5 +46,11 @@ public class Enemy : MonoBehaviour
     private void Refresh()
     {
         HP_Slider.value = HP / (float)MaxHP;
+    }
+
+    public void Damaged(int damage)
+    {
+        HP -= damage;
+        Refresh();
     }
 }
