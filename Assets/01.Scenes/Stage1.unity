@@ -1415,6 +1415,7 @@ GameObject:
   - component: {fileID: 794403481}
   - component: {fileID: 794403483}
   - component: {fileID: 794403484}
+  - component: {fileID: 794403485}
   m_Layer: 5
   m_Name: UI_Player
   m_TagString: Untagged
@@ -1527,6 +1528,22 @@ MonoBehaviour:
   XP_Slider: {fileID: 1089792824}
   HP_Count: {fileID: 1054363355}
   XP_Count: {fileID: 495172420}
+--- !u!114 &794403485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794403479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd652cb9860d71749b3b395a42f68218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindWeaponText: {fileID: 562587755}
+  FireWeaponText: {fileID: 1097921587}
+  ArrowWeaponText: {fileID: 1255701308}
+  Player: {fileID: 6359318391490260180}
 --- !u!1 &854325717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5363058437532563420, guid: a29e22562090b5c4e8276a33f3992d77, type: 3}
@@ -1700,9 +1717,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss2
       objectReference: {fileID: 0}
+    - target: {fileID: 998624200649062980, guid: 00a860be32651b5459c0204cd986e664, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2290711116801427606, guid: 00a860be32651b5459c0204cd986e664, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 2290711116801427606, guid: 00a860be32651b5459c0204cd986e664, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2853,7 +2874,7 @@ PrefabInstance:
       value: -60
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 2207716200784306045, guid: 663b841c4e54cd24ca00078c805b0e69, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3864,6 +3885,9 @@ MonoBehaviour:
   - {fileID: 138523815}
   - {fileID: 854325717}
   - {fileID: 1393081715}
+  WindWeaponLevel: 0
+  FireWeaponLevel: 0
+  ArrowWeaponLevel: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

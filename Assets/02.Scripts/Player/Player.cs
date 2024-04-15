@@ -8,13 +8,13 @@ public class Player : MonoBehaviour
     public int MaxXP = 15;
    
     private void Start()
-    {      
+    { 
         Init();
     }
 
     public void Init()
     {
         HP = MaxHP;
-        XP = MaxXP;
+        XP = 0;
     }  
 }

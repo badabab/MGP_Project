@@ -95,9 +95,10 @@ GameObject:
   - component: {fileID: 1926489946972636893}
   - component: {fileID: 8549392798021626152}
   - component: {fileID: 8915792804868620117}
+  - component: {fileID: 485414615491484940}
   m_Layer: 0
   m_Name: FireItem
-  m_TagString: Untagged
+  m_TagString: WeaponItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,3 +206,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &485414615491484940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007731378383876280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84016b8dd3a638940a9ca27de4d1fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1

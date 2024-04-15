@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public enum EnemyType
 {
@@ -22,11 +23,13 @@ public class Enemy : MonoBehaviour
     public float KnockbackDuration = 1f;
     public float FlickerDuration = 0.1f;
     private bool _damaged = false;
+    private Player _player;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
         HP = MaxHP;
         Refresh();
         if (EnemyType == EnemyType.Rush)
@@ -91,6 +94,7 @@ public class Enemy : MonoBehaviour
         _damaged = false;
         if (HP <= 0)
         {
+            _player.GetComponent<Player>().XP += 1;
             Destroy(gameObject);
         }
     }

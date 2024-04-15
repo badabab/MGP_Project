@@ -30,6 +30,8 @@ public class Boss : MonoBehaviour
     public float FlickerDuration = 0.1f;
     private bool _damaged = false;
 
+    private Player _player;
+
     void Start()
     {
         HP = MaxHP;
@@ -37,6 +39,7 @@ public class Boss : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerTransform = GameObject.Find("Player").transform;
+        _player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     void Update()
@@ -158,6 +161,7 @@ public class Boss : MonoBehaviour
         _damaged = false;
         if (HP <= 0)
         {
+            _player.GetComponent<Player>().XP += 5;
             Death();
         }
     }

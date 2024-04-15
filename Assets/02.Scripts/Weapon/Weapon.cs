@@ -1,22 +1,17 @@
 using UnityEngine;
 
+public enum WeaponType
+{
+    Wind,
+    Fire,
+    Arrow
+}
+
 public class Weapon : MonoBehaviour
 {
-    public int Damage = 10;
-    //private WeaponType wType;
+    public WeaponType Wtype;
+    public int Damage = 5;
 
-    private void Start()
-    {
-        PlayerWeapon weapon = GetComponent<PlayerWeapon>();
-        //wType = weapon.CurrentWeapon;
-    }
-    private void Update()
-    {
-        /*if (wType == WeaponType.Arrow)
-        {
-
-        }*/
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))

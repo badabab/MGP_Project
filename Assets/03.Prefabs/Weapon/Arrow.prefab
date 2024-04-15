@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6267329728376235163}
   - component: {fileID: -5420473325268014370}
   - component: {fileID: 4696206476384007641}
-  - component: {fileID: 7586925801351885731}
+  - component: {fileID: -6420849931341783646}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
---- !u!114 &7586925801351885731
+--- !u!114 &-6420849931341783646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,4 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a60c413582c8f7409da678d9aa44bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Wtype: 2
   Damage: 5
