@@ -8,11 +8,26 @@ public class PlayerWeapon : MonoBehaviour
     public int WindWeaponLevel = 0;
     public int FireWeaponLevel = 0;
     public int ArrowWeaponLevel = 0;
+   
+    public Transform SpawnPoint;
+    private float _timer = 0;
+    public float SpawnTime = 1;
 
     private void Start()
     {
+        _timer = 0;
         SwitchWeapon(WeaponType.Wind);
         ActiveWeapon();
+    }
+
+    private void Update()
+    {
+        _timer += Time.deltaTime;
+        if (_timer > SpawnTime)
+        {
+            ActiveWeapon();
+            _timer = 0;
+        }
     }
 
     private void SwitchWeapon(WeaponType newWeapon)
@@ -41,13 +56,19 @@ public class PlayerWeapon : MonoBehaviour
         switch (CurrentWeapon)
         {
             case WeaponType.Wind:
-                Weapons[0].SetActive(true);
+                //Weapons[0].SetActive(true);
+                Instantiate(Weapons[0], SpawnPoint).SetActive(true);
+                Debug.Log("바람 무기");
                 break;
             case WeaponType.Fire:
-                Weapons[1].SetActive(true);
+                //Weapons[1].SetActive(true);
+                Instantiate(Weapons[1], SpawnPoint).SetActive(true);
+                Debug.Log("불 무기");
                 break;
             case WeaponType.Arrow:
-                Weapons[2].SetActive(true);
+                //Weapons[2].SetActive(true);
+                Instantiate(Weapons[2], SpawnPoint).SetActive(true);
+                Debug.Log("화살 무기");
                 break;
         }
     }
