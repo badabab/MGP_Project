@@ -559,13 +559,14 @@ MonoBehaviour:
   HP: 0
   MaxHP: 10
   Speed: 0.5
-  RushSpeed: 0.7
+  RushSpeed: 1
   Damage: 5
   EnemyScore: 100
   KnockbackForce: 0.5
   KnockbackDuration: 0.5
   FlickerDuration: 0.1
   IceImage: {fileID: 2619511898406015667}
+  jumpForce: 7
 --- !u!1 &6198995864477045158
 GameObject:
   m_ObjectHideFlags: 0

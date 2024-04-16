@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public enum EnemyType
 {
-    Normal, Rush, Fly, Drop,
+    Normal, Rush, Jump, Drop,
 }
 public class Enemy : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int HP;
     public int MaxHP = 10;
     public float Speed = 0.5f;
-    public float RushSpeed = 0.7f;
+    public float RushSpeed = 1f;
     public int Damage = 5;
     public int EnemyScore = 100;
 
@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
     private bool _isPaused = false;
     private float _animationSpeed;
     public GameObject IceImage;
+    private bool _isGround = true;
+    public float jumpForce = 7f;
 
     private void Start()
     {
@@ -56,7 +58,12 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        transform.Translate(Vector2.left * Speed * Time.deltaTime);       
+        transform.Translate(Vector2.left * Speed * Time.deltaTime);      
+        
+        if (EnemyType == EnemyType.Jump)
+        {
+            JumpType();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -77,7 +84,7 @@ public class Enemy : MonoBehaviour
         }
         if (other.CompareTag("Ground"))
         {
-            Destroy(gameObject);
+            _isGround = true;
         }
     }
 
@@ -137,5 +144,24 @@ public class Enemy : MonoBehaviour
         _isPaused = false;
         IceImage.SetActive(false);
         _animator.speed = _animationSpeed;
+    }
+
+    private void JumpType()
+    {
+        if (_isGround)
+        {
+            if (_isGround)
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
+                _isGround = false;
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            _isGround = false;
+        }
     }
 }

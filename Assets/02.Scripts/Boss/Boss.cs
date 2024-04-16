@@ -70,9 +70,7 @@ public class Boss : MonoBehaviour
 
     private void Death()
     {
-        // WeaponItem 2가지 랜덤 생성
-        // 아이템 선택하고 나면 다음 스테이지로
-
+        GameObject.Find("ChooseWeapon").GetComponent<ChooseWeapon>().CreateWeaponItem();
         Destroy(gameObject);
     }
 
