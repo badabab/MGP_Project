@@ -24,7 +24,6 @@ public class Item : MonoBehaviour
             if (IType == ItemType.Star)
             {
                 other.GetComponent<Player>().Score += StarScore;
-                Debug.Log($"Star {other.GetComponent<Player>().Score}");
             }
             else if (IType == ItemType.Ice)
             {

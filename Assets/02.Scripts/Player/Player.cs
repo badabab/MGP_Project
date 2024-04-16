@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
    
     private void Start()
     { 
+        Score = 0;
         Init();
     }
 
@@ -33,6 +34,5 @@ public class Player : MonoBehaviour
         MaxXP = MaxXP + 5 * (Level - 1);
         HP = MaxHP;
         XP = 0;
-        Score = 0;
     }  
 }

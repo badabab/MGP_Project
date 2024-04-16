@@ -17,6 +17,10 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.State != GameState.Go)
+        {
+            return;
+        }
         if (Wtype == WeaponType.Wind)
         {
             transform.Translate(Vector3.right * 0.2f * Time.deltaTime);

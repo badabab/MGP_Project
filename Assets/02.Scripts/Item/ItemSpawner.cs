@@ -8,7 +8,7 @@ public class ItemSpawner : MonoBehaviour
     public GameObject PowerItem;
 
     public float MinTime = 2f;
-    public float MaxTime = 10f;
+    public float MaxTime = 7f;
     private float _spawnTime = 5;
     private float _timer = 0;
 
@@ -38,7 +38,12 @@ public class ItemSpawner : MonoBehaviour
         }
     }
     private void Update()
-    {       
+    {
+        if (GameManager.Instance.State != GameState.Go)
+        {
+            return;
+        }
+
         _timer += Time.deltaTime;
         if (_timer >= _spawnTime)
         {
@@ -53,8 +58,6 @@ public class ItemSpawner : MonoBehaviour
                         item = i; break;
                     }
                 }
-                item.transform.position = this.transform.position;
-                item.gameObject.SetActive(true);
             }
             else if (probability>= 6 && probability < 8)
             {
@@ -65,8 +68,6 @@ public class ItemSpawner : MonoBehaviour
                         item = i; break;
                     }
                 }
-                item.transform.position = this.transform.position;
-                item.gameObject.SetActive(true);
             }
             else
             {
@@ -76,13 +77,13 @@ public class ItemSpawner : MonoBehaviour
                     {
                         item = i; break;
                     }
-                }
-                item.transform.position = this.transform.position;
-                item.gameObject.SetActive(true);              
+                }                        
             }
+            float randomX = Random.Range(-2f, 2f);
+            item.transform.position = new Vector2(randomX, 6);
+            item.gameObject.SetActive(true);
             _timer = 0;
             _spawnTime = Random.Range(MinTime, MaxTime);
-            Debug.Log($"아이템 스폰{item.IType} / {_spawnTime}");
         }
     }
 }

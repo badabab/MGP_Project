@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
     public bool LookingRight = true;
     public float Speed = 0.5f;
     public float MinX = -2f;
-    public float MaxX = 0f;
+    public float MaxX = 2f;
 
     private Rigidbody2D _rb;
     private Animator _animator;
@@ -26,6 +26,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.State != GameState.Go)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             PlayerTurn();

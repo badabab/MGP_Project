@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _isGround = true;
     public int Damage = 10;
+    public int BossScore = 500;
 
     public float jumpForce = 7f;
     public float moveSpeed = 2f;
@@ -44,10 +45,20 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.State != GameState.Go)
+        {
+            return;
+        }
+
         if (_isGround)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
+        if (HP <= MaxHP * 0.25f)
+        {
+            Damage += 5;
+        }
+
         switch(BossType)
         {
             case BossType.WalkJump:
@@ -59,6 +70,9 @@ public class Boss : MonoBehaviour
 
     private void Death()
     {
+        // WeaponItem 2가지 랜덤 생성
+        // 아이템 선택하고 나면 다음 스테이지로
+
         Destroy(gameObject);
     }
 
@@ -167,6 +181,7 @@ public class Boss : MonoBehaviour
         if (HP <= 0)
         {
             _player.GetComponent<Player>().XP += 5;
+            _player.GetComponent<Player>().Score += BossScore;
             Death();
         }
     }

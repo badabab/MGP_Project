@@ -1,8 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UI_GameoverPopup : MonoBehaviour
 {
+    public TextMeshProUGUI ScoreText;
+    public GameObject player;
+
     public void Open()
     {
         gameObject.SetActive(true);

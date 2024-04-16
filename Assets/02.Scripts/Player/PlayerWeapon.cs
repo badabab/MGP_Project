@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerWeapon : MonoBehaviour
 {
@@ -24,6 +23,8 @@ public class PlayerWeapon : MonoBehaviour
     private float _timer = 0;
     public float SpawnTime = 1;
 
+    public GameObject PowerImage;
+
     private void Awake()
     {
         _weaponPool = new List<GameObject>[Weapons.Length];
@@ -37,6 +38,7 @@ public class PlayerWeapon : MonoBehaviour
                 _weaponPool[i].Add(weaponObject);
             }
         }
+        PowerImage.SetActive(false);
     }
     private void Start()
     {
@@ -47,6 +49,10 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.State != GameState.Go)
+        {
+            return;
+        }
         _timer += Time.deltaTime;
         if (_timer > SpawnTime)
         {
@@ -76,7 +82,7 @@ public class PlayerWeapon : MonoBehaviour
             ArrowWeaponLevel += 1;
             CurrentWeaponLevel = ArrowWeaponLevel;
         }
-        CurrentWeaponDamage = (CurrentWeaponLevel * 2) + 5;
+        CurrentWeaponDamage = (CurrentWeaponLevel - 1) * 2 + 5;
         CurrentWeapon = newWeapon;
     }
 
@@ -115,15 +121,14 @@ public class PlayerWeapon : MonoBehaviour
 
     public void PowerItem()
     {
-        Debug.Log("PowerItem");
         StartCoroutine(Power_Coroutine());
     }
     private IEnumerator Power_Coroutine()
     {
         CurrentWeaponDamage += 10;
-        // ∫“ ¿Ã∆Â∆Æ
+        PowerImage.SetActive(true);
         yield return new WaitForSeconds(5);
         CurrentWeaponDamage -= 10;
-        // ∫“ ¿Ã∆Â∆Æ ≤Ù±‚
+        PowerImage.SetActive(false);
     }
 }
