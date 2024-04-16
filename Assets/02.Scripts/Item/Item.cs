@@ -12,6 +12,11 @@ public class Item : MonoBehaviour
     public ItemType IType;
     public int StarScore = 300;
 
+    private void Update()
+    {
+        transform.Translate(Vector3.down * 1f * Time.deltaTime);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -19,6 +24,7 @@ public class Item : MonoBehaviour
             if (IType == ItemType.Star)
             {
                 other.GetComponent<Player>().Score += StarScore;
+                Debug.Log($"Star {other.GetComponent<Player>().Score}");
             }
             else if (IType == ItemType.Ice)
             {
@@ -36,6 +42,12 @@ public class Item : MonoBehaviour
             {
                 other.GetComponent<PlayerWeapon>().PowerItem();
             }
+            this.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            this.gameObject.SetActive(false);
         }
     }
 }

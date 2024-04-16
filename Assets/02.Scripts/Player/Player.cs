@@ -14,6 +14,19 @@ public class Player : MonoBehaviour
         Init();
     }
 
+    private void Update()
+    {
+        if (HP <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
+        if (XP >= MaxXP)
+        {
+            Level++;
+            Init();
+        }
+    }
+
     public void Init()
     {
         MaxHP = MaxHP + 2 * (Level - 1);

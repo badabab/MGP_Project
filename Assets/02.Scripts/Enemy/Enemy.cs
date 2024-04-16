@@ -110,6 +110,7 @@ public class Enemy : MonoBehaviour
 
     public void IceItem()
     {
+        Debug.Log("Ice Item");
         StartCoroutine(Ice_Coroutine());
     }
     private IEnumerator Ice_Coroutine()

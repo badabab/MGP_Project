@@ -35,7 +35,8 @@ public class Weapon : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer > ActiveTime)
         {
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
+            _timer = 0;
         }
     }
 }

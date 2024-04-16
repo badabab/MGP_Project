@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerWeapon : MonoBehaviour
 {
     public WeaponType CurrentWeapon;
     public GameObject[] Weapons;
+    public int PoolSize = 7;
+    private List<GameObject>[] _weaponPool;
 
     public int CurrentWeaponLevel = 0;
     public int WindWeaponLevel = 0;
@@ -20,11 +24,25 @@ public class PlayerWeapon : MonoBehaviour
     private float _timer = 0;
     public float SpawnTime = 1;
 
+    private void Awake()
+    {
+        _weaponPool = new List<GameObject>[Weapons.Length];
+        for (int i = 0; i < Weapons.Length; i++)
+        {
+            _weaponPool[i] = new List<GameObject> ();
+            for (int j = 0; j < PoolSize; j++)
+            {
+                GameObject weaponObject = Instantiate(Weapons[i], SpawnPoint);
+                weaponObject.SetActive(false);
+                _weaponPool[i].Add(weaponObject);
+            }
+        }
+    }
     private void Start()
     {
         _timer = 0;
         SwitchWeapon(WeaponType.Wind);
-        ActiveWeapon();
+        ActiveWeapon((int)CurrentWeapon);
     }
 
     private void Update()
@@ -32,7 +50,7 @@ public class PlayerWeapon : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer > SpawnTime)
         {
-            ActiveWeapon();
+            ActiveWeapon((int)CurrentWeapon);
             _timer = 0;
         }
     }
@@ -62,25 +80,16 @@ public class PlayerWeapon : MonoBehaviour
         CurrentWeapon = newWeapon;
     }
 
-    private void ActiveWeapon()
+    private void ActiveWeapon(int index)
     {
-        switch (CurrentWeapon)
+        foreach (GameObject weapon in _weaponPool[index])
         {
-            case WeaponType.Wind:
-                //Weapons[0].SetActive(true);
-                Instantiate(Weapons[0], SpawnPoint).SetActive(true);
-                Debug.Log("바람 무기");
+            if (!weapon.activeInHierarchy)
+            {
+                weapon.transform.position = SpawnPoint.position;
+                weapon.SetActive(true);
                 break;
-            case WeaponType.Fire:
-                //Weapons[1].SetActive(true);
-                Instantiate(Weapons[1], SpawnPoint).SetActive(true);
-                Debug.Log("불 무기");
-                break;
-            case WeaponType.Arrow:
-                //Weapons[2].SetActive(true);
-                Instantiate(Weapons[2], SpawnPoint).SetActive(true);
-                Debug.Log("화살 무기");
-                break;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
@@ -100,12 +109,13 @@ public class PlayerWeapon : MonoBehaviour
             {
                 SwitchWeapon(WeaponType.Arrow);
             }
-        }       
-        ActiveWeapon();
+        }
+        ActiveWeapon((int)CurrentWeapon);
     }
 
     public void PowerItem()
     {
+        Debug.Log("PowerItem");
         StartCoroutine(Power_Coroutine());
     }
     private IEnumerator Power_Coroutine()
