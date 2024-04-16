@@ -116,6 +116,11 @@ public class Boss : MonoBehaviour
             PlayerMove player = other.GetComponent<PlayerMove>();
             player.Damaged(Damage);
         }
+        if (other.CompareTag("Weapon"))
+        {
+            PlayerWeapon player = _player.GetComponent<PlayerWeapon>();
+            Damaged(player.CurrentWeaponDamage);
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -147,16 +152,16 @@ public class Boss : MonoBehaviour
         while (elapsedTime < KnockbackDuration)
         {
             // Alpha 값을 빠르게 반복하도록 변경
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
+            _spriteRenderer.color = new Color(1, 1, 1, 1f);
             yield return new WaitForSeconds(FlickerDuration);
 
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 0.4f);
+            _spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(FlickerDuration);
 
             elapsedTime += FlickerDuration * 2f;
         }
 
-        _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
+        _spriteRenderer.color = new Color(1, 1, 1, 1f);
         _rb.velocity = Vector2.zero;
         _damaged = false;
         if (HP <= 0)

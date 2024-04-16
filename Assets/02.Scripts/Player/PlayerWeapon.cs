@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
@@ -5,10 +6,16 @@ public class PlayerWeapon : MonoBehaviour
     public WeaponType CurrentWeapon;
     public GameObject[] Weapons;
 
+    public int CurrentWeaponLevel = 0;
     public int WindWeaponLevel = 0;
     public int FireWeaponLevel = 0;
     public int ArrowWeaponLevel = 0;
-   
+
+    public int CurrentWeaponDamage = 0;
+    public int WindWeaponDamage = 5;
+    public int FireWeaponDamage = 5;
+    public int ArrowWeaponDamage = 5;
+
     public Transform SpawnPoint;
     private float _timer = 0;
     public float SpawnTime = 1;
@@ -39,15 +46,19 @@ public class PlayerWeapon : MonoBehaviour
         if (newWeapon == WeaponType.Wind)
         {
             WindWeaponLevel += 1;
+            CurrentWeaponLevel = WindWeaponLevel;
         }
         else if (newWeapon == WeaponType.Fire)
         {
             FireWeaponLevel += 1;
+            CurrentWeaponLevel = FireWeaponLevel;
         }
         else if (newWeapon == WeaponType.Arrow)
         {
             ArrowWeaponLevel += 1;
+            CurrentWeaponLevel = ArrowWeaponLevel;
         }
+        CurrentWeaponDamage = (CurrentWeaponLevel * 2) + 5;
         CurrentWeapon = newWeapon;
     }
 
@@ -91,5 +102,18 @@ public class PlayerWeapon : MonoBehaviour
             }
         }       
         ActiveWeapon();
+    }
+
+    public void PowerItem()
+    {
+        StartCoroutine(Power_Coroutine());
+    }
+    private IEnumerator Power_Coroutine()
+    {
+        CurrentWeaponDamage += 10;
+        // ∫“ ¿Ã∆Â∆Æ
+        yield return new WaitForSeconds(5);
+        CurrentWeaponDamage -= 10;
+        // ∫“ ¿Ã∆Â∆Æ ≤Ù±‚
     }
 }

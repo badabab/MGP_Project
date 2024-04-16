@@ -1549,6 +1549,7 @@ MonoBehaviour:
   XP_Slider: {fileID: 1089792824}
   HP_Count: {fileID: 1054363355}
   XP_Count: {fileID: 495172420}
+  Level: {fileID: 1011677720}
 --- !u!114 &794403485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,7 +1805,7 @@ GameObject:
   - component: {fileID: 1011677721}
   - component: {fileID: 1011677720}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3530,6 +3531,8 @@ MonoBehaviour:
   MaxHP: 50
   XP: 0
   MaxXP: 15
+  Level: 1
+  Score: 0
 --- !u!50 &2194998535441537002
 Rigidbody2D:
   serializedVersion: 4
@@ -3698,9 +3701,14 @@ MonoBehaviour:
   - {fileID: 813464099291718800, guid: 401534da85b54c744aa0ecb44c075ecb, type: 3}
   - {fileID: 5363058437532563420, guid: a29e22562090b5c4e8276a33f3992d77, type: 3}
   - {fileID: 75667879771162501, guid: 663b841c4e54cd24ca00078c805b0e69, type: 3}
+  CurrentWeaponLevel: 0
   WindWeaponLevel: 0
   FireWeaponLevel: 0
   ArrowWeaponLevel: 0
+  CurrentWeaponDamage: 0
+  WindWeaponDamage: 5
+  FireWeaponDamage: 5
+  ArrowWeaponDamage: 5
   SpawnPoint: {fileID: 625048533}
   SpawnTime: 1
 --- !u!1660057539 &9223372036854775807

@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public enum EnemyType
 {
@@ -25,6 +24,8 @@ public class Enemy : MonoBehaviour
     private bool _damaged = false;
     private Player _player;
 
+    private bool _isPaused = false;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -40,6 +41,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (_isPaused)
+        {
+            return;
+        }
         transform.Translate(Vector2.left * Speed * Time.deltaTime);       
     }
 
@@ -53,6 +58,11 @@ public class Enemy : MonoBehaviour
         {
             PlayerMove player = other.GetComponent<PlayerMove>();
             player.Damaged(Damage);
+        }
+        if (other.CompareTag("Weapon"))
+        {
+            PlayerWeapon player = _player.GetComponent<PlayerWeapon>();
+            Damaged(player.CurrentWeaponDamage);
         }
     }
 
@@ -79,17 +89,16 @@ public class Enemy : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < KnockbackDuration)
         {
-            // Alpha 값을 빠르게 반복하도록 변경
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
+            _spriteRenderer.color = new Color(1, 1, 1, 1f);
             yield return new WaitForSeconds(FlickerDuration);
 
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 0.4f);
+            _spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(FlickerDuration);
 
             elapsedTime += FlickerDuration * 2f;
         }
 
-        _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
+        _spriteRenderer.color = new Color(1, 1, 1, 1f);
         _rb.velocity = Vector2.zero;
         _damaged = false;
         if (HP <= 0)
@@ -97,5 +106,17 @@ public class Enemy : MonoBehaviour
             _player.GetComponent<Player>().XP += 1;
             Destroy(gameObject);
         }
+    }
+
+    public void IceItem()
+    {
+        StartCoroutine(Ice_Coroutine());
+    }
+    private IEnumerator Ice_Coroutine()
+    {
+        _isPaused = true;
+        // 어는 이펙트..?
+        yield return new WaitForSeconds(5);
+        _isPaused = false;
     }
 }

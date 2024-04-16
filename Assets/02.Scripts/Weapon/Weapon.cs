@@ -10,7 +10,6 @@ public enum WeaponType
 public class Weapon : MonoBehaviour
 {
     public WeaponType Wtype;
-    public int Damage = 5;
 
     private float _timer = 0;
     public float ActiveTime = 1f;
@@ -37,18 +36,6 @@ public class Weapon : MonoBehaviour
         if (_timer > ActiveTime)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            other.GetComponent<Enemy>().Damaged(Damage);
-        }
-        else if (other.CompareTag("Boss"))
-        {
-            other.GetComponent<Boss>().Damaged(Damage);
         }
     }
 }

@@ -11,6 +11,7 @@ public class UI_Player : MonoBehaviour
 
     public TextMeshProUGUI HP_Count;
     public TextMeshProUGUI XP_Count;
+    public TextMeshProUGUI Level;
 
     private void Update()
     {
@@ -19,10 +20,12 @@ public class UI_Player : MonoBehaviour
 
     public void Refresh()
     {
-        HP_Slider.value = Player.GetComponent<Player>().HP / (float)Player.GetComponent<Player>().MaxHP;
-        XP_Slider.value = Player.GetComponent<Player>().XP / (float)Player.GetComponent<Player>().MaxXP;
+        Player player = Player.GetComponent<Player>();
+        HP_Slider.value = player.HP / (float)player.MaxHP;
+        XP_Slider.value = player.XP / (float)player.MaxXP;
 
-        HP_Count.text = $"{Player.GetComponent<Player>().HP}/{Player.GetComponent<Player>().MaxHP}";
-        XP_Count.text = $"{Player.GetComponent<Player>().XP}/{Player.GetComponent<Player>().MaxXP}";
+        HP_Count.text = $"{player.HP}/{player.MaxHP}";
+        XP_Count.text = $"{player.XP}/{player.MaxXP}";
+        Level.text = $"Lv.{player.Level}";
     }
 }
