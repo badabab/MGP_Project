@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.down * 1f * Time.deltaTime);
+        transform.Translate(Vector3.down * 2f * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
