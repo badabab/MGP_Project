@@ -76,15 +76,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    public void Pause()
-    {
-        State = GameState.Pause;
-        Time.timeScale = 0f;
-    }
-    public void Continue()
-    {
-        State = GameState.Go;
-        Time.timeScale = 1f;
-    }
 }

@@ -74,6 +74,7 @@ public class Boss : MonoBehaviour
     private void Death()
     {
         GameObject.Find("BossDeath").GetComponent<BossDeath>().CreateWeaponItem();
+        GameObject.Find("BossDeath").GetComponent<BossDeath>().CreateStar();
         Destroy(gameObject);
     }
 
@@ -130,7 +131,6 @@ public class Boss : MonoBehaviour
         {
             PlayerMove player = other.GetComponent<PlayerMove>();
             player.Damaged(Damage);
-            Debug.Log($"플레이어 데미지 {player.gameObject.GetComponent<Player>().HP}, {Damage}");
         }
         if (other.CompareTag("Weapon"))
         {

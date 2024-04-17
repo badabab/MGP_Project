@@ -557,9 +557,9 @@ MonoBehaviour:
   EnemyType: 1
   HP_Slider: {fileID: 7737883870522198527}
   HP: 0
-  MaxHP: 15
-  Speed: 0.5
-  RushSpeed: 1
+  MaxHP: 10
+  Speed: 0.3
+  RushSpeed: 0.7
   Damage: 7
   EnemyScore: 10
   KnockbackForce: 0.5

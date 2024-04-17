@@ -201,7 +201,7 @@ MonoBehaviour:
   Damage: 10
   BossScore: 30
   jumpForce: 7
-  moveSpeed: 2
+  moveSpeed: 1
   followDistance: 10
   WalkJumpTime: 3
   KnockbackForce: 0.5

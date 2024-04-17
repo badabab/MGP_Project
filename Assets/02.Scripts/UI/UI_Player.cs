@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UI_Player : MonoBehaviour
 {
-    public GameObject Player;
+    private GameObject _player;
 
     public Slider HP_Slider;
     public Slider XP_Slider;
@@ -13,6 +13,10 @@ public class UI_Player : MonoBehaviour
     public TextMeshProUGUI XP_Count;
     public TextMeshProUGUI Level;
 
+    private void Awake()
+    {
+        _player = GameObject.Find("Player");
+    }
     private void Update()
     {
         Refresh();
@@ -20,7 +24,7 @@ public class UI_Player : MonoBehaviour
 
     public void Refresh()
     {
-        Player player = Player.GetComponent<Player>();
+        Player player = _player.GetComponent<Player>();
         HP_Slider.value = player.HP / (float)player.MaxHP;
         XP_Slider.value = player.XP / (float)player.MaxXP;
 

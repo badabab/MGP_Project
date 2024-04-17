@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemies();
     }
 
-    private void SpawnEnemies()
+    public void SpawnEnemies()
     {
         foreach (Enemy enemy in _enemyPool)
         {
@@ -38,6 +38,13 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(randomX, -0.5f, 0);
             enemy.transform.position = spawnPosition;
             enemy.gameObject.SetActive(true);
+        }
+    }
+    public void DestroyEnemies()
+    {
+        foreach (Enemy enemy in _enemyPool)
+        {
+            enemy.gameObject.SetActive(false);
         }
     }
 }

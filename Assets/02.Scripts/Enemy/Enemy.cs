@@ -35,18 +35,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        IceImage.SetActive(false);
-        _rb = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _player = GameObject.Find("Player").GetComponent<Player>();
-        _animator = GetComponent<Animator>();
-        _animationSpeed = _animator.speed;
-        HP = MaxHP;
-        Refresh();
-        if (EnemyType == EnemyType.Rush)
-        {
-            Speed = RushSpeed;
-        }
+        Init();
     }
 
     private void Update()
@@ -66,6 +55,26 @@ public class Enemy : MonoBehaviour
         if (EnemyType == EnemyType.Jump)
         {
             JumpType();
+        }
+    }
+
+    private void OnEnable()
+    {
+        Init();
+    }
+    private void Init()
+    {
+        IceImage.SetActive(false);
+        _rb = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        _animator = GetComponent<Animator>();
+        _animationSpeed = _animator.speed;
+        HP = MaxHP;
+        Refresh();
+        if (EnemyType == EnemyType.Rush)
+        {
+            Speed = RushSpeed;
         }
     }
 
@@ -93,7 +102,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -150,7 +159,7 @@ public class Enemy : MonoBehaviour
         {
             _player.GetComponent<Player>().XP += 1;
             _player.GetComponent<Player>().Score += EnemyScore;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

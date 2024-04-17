@@ -10,7 +10,7 @@ public class MoveWall : MonoBehaviour
             return;
         }
 
-        if (transform.position.x <= 5)
+        if (transform.position.x <= 3)
         {
             return;
         }
