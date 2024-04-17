@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _isGround = true;
     public int Damage = 10;
+    private int _plusDamage;
     public int BossScore = 30;
 
     public float jumpForce = 7f;
@@ -32,6 +33,7 @@ public class Boss : MonoBehaviour
     private bool _damaged = false;
 
     private Player _player;
+    private float _attackTimer = 0;
 
     void Start()
     {
@@ -41,6 +43,7 @@ public class Boss : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerTransform = GameObject.Find("Player").transform;
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _plusDamage = Damage + 5;
     }
 
     void Update()
@@ -56,7 +59,7 @@ public class Boss : MonoBehaviour
         }
         if (HP <= MaxHP * 0.25f)
         {
-            Damage += 5;
+            Damage = _plusDamage;
         }
 
         switch(BossType)
@@ -127,11 +130,25 @@ public class Boss : MonoBehaviour
         {
             PlayerMove player = other.GetComponent<PlayerMove>();
             player.Damaged(Damage);
+            Debug.Log($"플레이어 데미지 {player.gameObject.GetComponent<Player>().HP}, {Damage}");
         }
         if (other.CompareTag("Weapon"))
         {
             PlayerWeapon player = _player.GetComponent<PlayerWeapon>();
             Damaged(player.CurrentWeaponDamage);
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _attackTimer += Time.deltaTime;
+            if (_attackTimer >= 1)
+            {
+                PlayerMove player = other.GetComponent<PlayerMove>();
+                player.Damaged(Damage);
+                _attackTimer = 0;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D other)

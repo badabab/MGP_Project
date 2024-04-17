@@ -455,7 +455,7 @@ MonoBehaviour:
   BossScore: 30
   jumpForce: 7
   moveSpeed: 2
-  followDistance: 100
+  followDistance: 10
   WalkJumpTime: 3
   KnockbackForce: 0.5
   KnockbackDuration: 0.5

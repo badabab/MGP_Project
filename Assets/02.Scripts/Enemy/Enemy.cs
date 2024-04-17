@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public float FlickerDuration = 0.1f;
     private bool _damaged = false;
     private Player _player;
+    private float _attackTimer = 0;
 
     private Animator _animator;
     private bool _isPaused = false;
@@ -94,6 +95,19 @@ public class Enemy : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _attackTimer += Time.deltaTime;
+            if (_attackTimer >= 1)
+            {
+                PlayerMove player = other.GetComponent<PlayerMove>();
+                player.Damaged(Damage);
+                _attackTimer = 0;
+            }          
         }
     }
 
