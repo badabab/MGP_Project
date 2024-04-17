@@ -54,11 +54,13 @@ public class PlayerWeapon : MonoBehaviour
             return;
         }
         _timer += Time.deltaTime;
+
         if (_timer > SpawnTime)
         {
             ActiveWeapon((int)CurrentWeapon);
             _timer = 0;
         }
+
     }
 
     private void SwitchWeapon(WeaponType newWeapon)

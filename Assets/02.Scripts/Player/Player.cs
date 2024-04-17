@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,11 +10,15 @@ public class Player : MonoBehaviour
     public int MaxXP = 15;
     public int Level = 1;
     public int Score;
+
+    public TextMeshProUGUI LevelUP;
    
     private void Start()
     { 
         Score = 0;
         Init();
+
+        LevelUP.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -25,6 +31,7 @@ public class Player : MonoBehaviour
         {
             Level++;
             Init();
+            StartCoroutine(LevelUP_Coroutine());
         }
     }
 
@@ -35,4 +42,11 @@ public class Player : MonoBehaviour
         HP = MaxHP;
         XP = 0;
     }  
+
+    private IEnumerator LevelUP_Coroutine()
+    {
+        LevelUP.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2);
+        LevelUP.gameObject.SetActive(false);
+    }
 }

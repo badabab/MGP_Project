@@ -43,4 +43,14 @@ public class Weapon : MonoBehaviour
             _timer = 0;
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (Wtype == WeaponType.Arrow)
+        {
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
+            {
+                gameObject.SetActive(false);
+            }
+        }       
+    }
 }
