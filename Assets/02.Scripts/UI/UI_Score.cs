@@ -12,6 +12,10 @@ public class UI_Score : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Instance.State == GameState.Over)
+        {
+            gameObject.SetActive(false);
+        }
         Score.text = $"Score : {_player.GetComponent<Player>().Score}";
     }
 }

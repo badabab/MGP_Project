@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        Time.timeScale = 0f;
         State = GameState.Over;
         StateText.gameObject.SetActive(true);
         Refresh();
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
             }
             case GameState.Over:
             {
-                StateText.color = Color.green;
+                StateText.color = new Color32(230, 180, 175, 255);
                 StateText.text = "Game Over";
                 break;
             }

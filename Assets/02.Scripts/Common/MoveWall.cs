@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MoveWall : MonoBehaviour
 {
+    public float WallSpeed = 0.7f;
     void Update()
     {
         if (GameManager.Instance.State != GameState.Go)
@@ -13,6 +14,6 @@ public class MoveWall : MonoBehaviour
         {
             return;
         }
-        transform.Translate(Vector3.left * 1f * Time.deltaTime);
+        transform.Translate(Vector3.left * WallSpeed * Time.deltaTime);
     }
 }

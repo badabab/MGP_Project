@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChooseWeapon : MonoBehaviour
+public class BossDeath : MonoBehaviour
 {
     public GameObject[] WeaponItems;
 

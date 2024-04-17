@@ -12,7 +12,11 @@ public class Background : MonoBehaviour
         _fastScrollSpeed = ScrollSpeed * 2;
     }
     private void Update()
-    {     
+    {
+        if (GameManager.Instance.State != GameState.Go)
+        {
+            return;
+        }
         Vector2 dir;
         dir = Vector2.right;
         if (Player.transform.position.x == Player.GetComponent<PlayerMove>().MaxX)

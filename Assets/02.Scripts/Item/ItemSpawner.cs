@@ -20,19 +20,19 @@ public class ItemSpawner : MonoBehaviour
         _itemPool = new List<Item>();
         for (int i = 0; i < PoolSize; i++)
         {
-            GameObject itemObject = Instantiate(StarItem);
+            GameObject itemObject = Instantiate(StarItem, transform);
             itemObject.SetActive(false);
             _itemPool.Add(itemObject.GetComponent<Item>());
         }
         for (int i = 0; i < PoolSize; i++)
         {
-            GameObject itemObject = Instantiate(IceItem);
+            GameObject itemObject = Instantiate(IceItem, transform);
             itemObject.SetActive(false);
             _itemPool.Add(itemObject.GetComponent<Item>());
         }
         for (int i = 0; i < PoolSize; i++)
         {
-            GameObject itemObject = Instantiate(PowerItem);
+            GameObject itemObject = Instantiate(PowerItem, transform);
             itemObject.SetActive(false);
             _itemPool.Add(itemObject.GetComponent<Item>());
         }

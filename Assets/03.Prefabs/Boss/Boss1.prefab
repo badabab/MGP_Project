@@ -452,9 +452,10 @@ MonoBehaviour:
   HP: 0
   MaxHP: 30
   Damage: 10
+  BossScore: 30
   jumpForce: 7
   moveSpeed: 2
-  followDistance: 10
+  followDistance: 100
   WalkJumpTime: 3
   KnockbackForce: 0.5
   KnockbackDuration: 0.5

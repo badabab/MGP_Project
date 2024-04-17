@@ -15,7 +15,7 @@ public class Boss : MonoBehaviour
     private Rigidbody2D _rb;
     private bool _isGround = true;
     public int Damage = 10;
-    public int BossScore = 500;
+    public int BossScore = 30;
 
     public float jumpForce = 7f;
     public float moveSpeed = 2f;
@@ -70,7 +70,7 @@ public class Boss : MonoBehaviour
 
     private void Death()
     {
-        GameObject.Find("ChooseWeapon").GetComponent<ChooseWeapon>().CreateWeaponItem();
+        GameObject.Find("BossDeath").GetComponent<BossDeath>().CreateWeaponItem();
         Destroy(gameObject);
     }
 

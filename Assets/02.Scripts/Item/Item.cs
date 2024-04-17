@@ -10,7 +10,7 @@ public enum ItemType
 public class Item : MonoBehaviour
 {
     public ItemType IType;
-    public int StarScore = 300;
+    public int StarScore = 15;
 
     private void Update()
     {

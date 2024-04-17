@@ -416,7 +416,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3716501961341821840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,11 +432,11 @@ MonoBehaviour:
   EnemyType: 0
   HP_Slider: {fileID: 2409766206369794491}
   HP: 0
-  MaxHP: 10
+  MaxHP: 15
   Speed: 0.5
   RushSpeed: 1
-  Damage: 5
-  EnemyScore: 100
+  Damage: 7
+  EnemyScore: 10
   KnockbackForce: 0.5
   KnockbackDuration: 0.5
   FlickerDuration: 0.1

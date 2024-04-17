@@ -11,11 +11,11 @@ public class Enemy : MonoBehaviour
     public EnemyType EnemyType;
     public Slider HP_Slider;
     public int HP;
-    public int MaxHP = 10;
+    public int MaxHP = 15;
     public float Speed = 0.5f;
     public float RushSpeed = 1f;
-    public int Damage = 5;
-    public int EnemyScore = 100;
+    public int Damage = 7;
+    public int EnemyScore = 10;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -56,10 +56,12 @@ public class Enemy : MonoBehaviour
         }
         if (_isPaused)
         {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
             return;
         }
-        transform.Translate(Vector2.left * Speed * Time.deltaTime);      
-        
+        //transform.Translate(Vector2.left * Speed * Time.deltaTime);      
+        Vector2 direction = (_player.transform.position - transform.position).normalized;
+        _rb.velocity = new Vector2(direction.x * Speed, _rb.velocity.y);
         if (EnemyType == EnemyType.Jump)
         {
             JumpType();
@@ -84,7 +86,14 @@ public class Enemy : MonoBehaviour
         }
         if (other.CompareTag("Ground"))
         {
-            _isGround = true;
+            if (EnemyType == EnemyType.Jump)
+            {
+                _isGround = true;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
