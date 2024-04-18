@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4fd2f2c9591b443b985c0b45b3fae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossType: 1
+  BossType: 0
   HP_Slider: {fileID: 1873599861515131500}
   HP: 0
   MaxHP: 30
