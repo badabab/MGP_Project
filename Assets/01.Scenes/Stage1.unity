@@ -735,8 +735,8 @@ MonoBehaviour:
   - {fileID: 4592310049302031861, guid: 922f31528b4ca3a4da4c521e9905212c, type: 3}
   - {fileID: 2958702533109706899, guid: 90e10f969567cb4458de06c74f75a805, type: 3}
   PoolSize: 7
-  MinX: 3
-  MaxX: 18
+  MinX: 2
+  MaxX: 40
 --- !u!4 &216351587
 Transform:
   m_ObjectHideFlags: 0
@@ -4248,7 +4248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 450}
+  m_AnchoredPosition: {x: 0, y: 220}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398106553

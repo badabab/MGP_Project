@@ -60,6 +60,19 @@ public class PlayerMove : MonoBehaviour
         Vector3 newScale = transform.localScale;
         newScale.x *= -1;
         transform.localScale = newScale;
+        DestroyWeapon();
+    }
+
+    private void DestroyWeapon()
+    {
+        GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
+        foreach (GameObject g in weapons)
+        {
+            if (g.GetComponent<Weapon>().Wtype == WeaponType.Arrow)
+            {
+                g.SetActive(false);
+            }
+        }
     }
 
     public void Damaged(int damage)

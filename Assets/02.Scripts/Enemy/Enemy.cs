@@ -11,9 +11,13 @@ public class Enemy : MonoBehaviour
     public EnemyType EnemyType;
     public Slider HP_Slider;
     public int HP;
-    public int MaxHP = 15;
+    public int MaxHP = 10;
     public float Speed = 0.5f;
-    public float RushSpeed = 1f;
+    public float MinSpeed = 0.3f;
+    public float MaxSpeed = 0.6f;  
+    public float MinRushSpeed = 0.7f;
+    public float MaxRushSpeed = 1f;
+    private float _rushSpeed = 0.8f;
     public int Damage = 7;
     public int EnemyScore = 10;
 
@@ -35,6 +39,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        Speed = Random.Range(MinSpeed, MaxSpeed);
         Init();
     }
 
@@ -74,7 +79,8 @@ public class Enemy : MonoBehaviour
         Refresh();
         if (EnemyType == EnemyType.Rush)
         {
-            Speed = RushSpeed;
+            _rushSpeed = Random.Range(MinRushSpeed, MaxRushSpeed);
+            Speed = _rushSpeed;
         }
     }
 
@@ -111,7 +117,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _attackTimer += Time.deltaTime;
-            if (_attackTimer >= 1)
+            if (_attackTimer >= 2)
             {
                 PlayerMove player = other.GetComponent<PlayerMove>();
                 player.Damaged(Damage);

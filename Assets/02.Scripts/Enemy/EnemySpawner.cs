@@ -8,8 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public int PoolSize = 7;
     private List<Enemy> _enemyPool;
 
-    public float MinX = 2;
-    public float MaxX = 40;
+    public int MinX = 2;
+    public int MaxX = 40;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (Enemy enemy in _enemyPool)
         {
-            float randomX = Random.Range(MinX, MaxX);
+            int randomX = Random.Range(MinX, MaxX);
             Vector3 spawnPosition = new Vector3(randomX, -0.5f, 0);
             enemy.transform.position = spawnPosition;
             enemy.gameObject.SetActive(true);

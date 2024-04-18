@@ -21,7 +21,7 @@ public class PlayerWeapon : MonoBehaviour
 
     public Transform SpawnPoint;
     private float _timer = 0;
-    public float SpawnTime = 1;
+    public float SpawnTime = 0.5f;
 
     public GameObject PowerImage;
 
