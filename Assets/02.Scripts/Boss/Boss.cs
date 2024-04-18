@@ -62,7 +62,7 @@ public class Boss : MonoBehaviour
             Damage = _plusDamage;
         }
 
-        switch(BossType)
+        switch (BossType)
         {
             case BossType.WalkJump:
                 WalkJumpType(); break;
@@ -131,6 +131,10 @@ public class Boss : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
+            if (_damaged)
+            {
+                return;
+            }
             PlayerMove player = other.GetComponent<PlayerMove>();
             player.Damaged(Damage);
         }

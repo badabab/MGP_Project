@@ -560,7 +560,10 @@ MonoBehaviour:
   HP: 0
   MaxHP: 10
   Speed: 0.3
-  RushSpeed: 0.7
+  MinSpeed: 0.3
+  MaxSpeed: 0.5
+  MinRushSpeed: 0.6
+  MaxRushSpeed: 0.8
   Damage: 7
   EnemyScore: 10
   KnockbackForce: 0.5

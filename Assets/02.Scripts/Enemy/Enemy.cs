@@ -116,6 +116,10 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (_damaged)
+            {
+                return;
+            }
             _attackTimer += Time.deltaTime;
             if (_attackTimer >= 2)
             {

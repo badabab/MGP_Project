@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
 {
     public ItemType IType;
     public int StarScore = 15;
+    public int ItemScore = 5;
 
     private void Update()
     {
@@ -27,6 +28,7 @@ public class Item : MonoBehaviour
             }
             else if (IType == ItemType.Ice)
             {
+                other.GetComponent<Player>().Score += ItemScore;
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject e in enemies)
                 {
@@ -39,6 +41,7 @@ public class Item : MonoBehaviour
             }
             else if (IType == ItemType.Power)
             {
+                other.GetComponent<Player>().Score += ItemScore;
                 other.GetComponent<PlayerWeapon>().PowerItem();
             }
             this.gameObject.SetActive(false);
