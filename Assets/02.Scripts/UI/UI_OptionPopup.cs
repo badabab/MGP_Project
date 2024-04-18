@@ -1,15 +1,10 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UI_GameoverPopup : MonoBehaviour
+public class UI_OptionPopup : MonoBehaviour
 {
-    public TextMeshProUGUI ScoreText;
-    public GameObject player;
-
     public void Open()
     {
-        ScoreText.text = $"Score : {player.GetComponent<Player>().Score}";
         gameObject.SetActive(true);
     }
     public void Close()
@@ -19,7 +14,13 @@ public class UI_GameoverPopup : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+    }
+    public void OnContinueButtonClicked()
+    {
+        //Debug.Log("계속하기");
+        GameManager.Instance.Continue();
+        Close();
     }
     public void OnRestartButtonClicked()
     {

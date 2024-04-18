@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossType: 1
-  HP_Slider: {fileID: 0}
+  HP_Slider: {fileID: 1838066425711479758}
   HP: 0
   MaxHP: 30
   Damage: 10

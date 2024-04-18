@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,15 +25,16 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         PopupStageNum.gameObject.SetActive(false);
-        NextStage();
+        //NextStage();
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            GameObject bossdeath = GameObject.Find("BossDeath");
-            bossdeath.GetComponent<BossDeath>().CreateWeaponItem();
+            EnemySpawner.GetComponent<EnemySpawner>().DestroyEnemies();
+            Boss boss = GameObject.FindAnyObjectByType<Boss>();
+            Destroy(boss.gameObject);
+            NextStage();
         }
     }
 
@@ -47,13 +49,19 @@ public class StageManager : MonoBehaviour
         StartCoroutine(PopupStageNum_Coroutine());
         
         EnemySpawner.GetComponent<EnemySpawner>().SpawnEnemies();
-        GameObject boss = Instantiate(BossPrefab[StageNum - 1]);
+        //GameObject boss = Instantiate(BossPrefab[StageNum % BossPrefab.Length - 1]);
+        int index = (StageNum - 1) % BossPrefab.Length;
+        if (index < 0)
+        {
+            index += BossPrefab.Length;
+        }
+        GameObject boss = Instantiate(BossPrefab[index]);
         boss.transform.position = new Vector2(20, -0.4f);
         ChangeBackground();
     }
     private IEnumerator PopupStageNum_Coroutine()
     {
-        yield return new WaitForSeconds(2.5f);
+        //yield return new WaitForSeconds(2.5f);
         PopupStageNum.gameObject.SetActive (true);
         yield return new WaitForSeconds(3);
         PopupStageNum.gameObject.SetActive (false);
@@ -65,7 +73,12 @@ public class StageManager : MonoBehaviour
         {
             return;
         }
-        int num = StageNum % 4 - 1;
+        //int num = StageNum % Backgrounds.Length - 1;
+        int num = (StageNum - 1) % Backgrounds.Length;
+        if (num < 0)
+        {
+            num += Backgrounds.Length;
+        }
         DisableBackGround();
         Backgrounds[num].SetActive(true);
         ChangeUIColor();

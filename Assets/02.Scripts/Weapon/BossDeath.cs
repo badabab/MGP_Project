@@ -53,7 +53,7 @@ public class BossDeath : MonoBehaviour
     }
     private IEnumerator NextStage_Coroutine()
     {
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(10);
         StageManager.instance.NextStage();
     }
 }

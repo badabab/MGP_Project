@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemies();
+        //SpawnEnemies();
     }
 
     public void SpawnEnemies()

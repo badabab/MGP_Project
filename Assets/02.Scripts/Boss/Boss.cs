@@ -75,6 +75,8 @@ public class Boss : MonoBehaviour
     {
         GameObject.Find("BossDeath").GetComponent<BossDeath>().CreateWeaponItem();
         GameObject.Find("BossDeath").GetComponent<BossDeath>().CreateStar();
+        EnemySpawner ES = GameObject.FindAnyObjectByType<EnemySpawner>();
+        ES.DestroyEnemies();
         Destroy(gameObject);
     }
 

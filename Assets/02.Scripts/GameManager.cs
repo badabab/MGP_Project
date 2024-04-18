@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameState State { get; private set; } = GameState.Ready;
     public TextMeshProUGUI StateText;
     public UI_GameoverPopup GameoverUI;
+    public UI_OptionPopup OptionUI;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        OptionUI.Close();
         Time.timeScale = 1f;
         StartCoroutine(Start_Coroutine());
     }
@@ -42,6 +44,10 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
         StateText.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(0.2f);
+        StageManager stageManager = GameObject.FindAnyObjectByType<StageManager>();
+        stageManager.NextStage();
     }
     public void GameOver()
     {
@@ -66,6 +72,7 @@ public class GameManager : MonoBehaviour
             {
                 StateText.color = new Color32(231, 206, 247, 255);
                 StateText.text = "Start!";
+                             
                 break;
             }
             case GameState.Over:
@@ -75,5 +82,22 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+    public void Pause()
+    {
+        State = GameState.Pause;
+        Time.timeScale = 0f;
+    }
+    public void Continue()
+    {
+        State = GameState.Go;
+        Time.timeScale = 1f;
+    }
+
+    public void OnOptionButtonClicked()
+    {
+        //Debug.Log("옵션 버튼 클릭");
+        OptionUI.Open();
+        Pause();
     }
 }
