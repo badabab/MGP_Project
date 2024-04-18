@@ -396,6 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: 2234cc2c2546ce5459f398aad89ba86d, type: 2}
   ScrollSpeed: 0.05
+  UI_Stat: {fileID: 0}
+  Backgrouds: []
 --- !u!212 &118697452
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1190,6 +1192,7 @@ MonoBehaviour:
   MaxXP: 15
   Level: 1
   Score: 0
+  LevelUP: {fileID: 0}
 --- !u!114 &443729824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5593,7 +5596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.67058825, g: 0.5803922, b: 0.4784314, a: 1}
+  m_Color: {r: 0.5921569, g: 0.41960788, b: 0.41960788, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

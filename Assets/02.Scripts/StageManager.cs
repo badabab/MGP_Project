@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
@@ -15,6 +14,8 @@ public class StageManager : MonoBehaviour
     public GameObject[] BossPrefab;
 
     public int StageNum = 0;
+    public GameObject[] Backgrounds;
+    public Image UI_Stat;
 
     private void Awake()
     {
@@ -48,6 +49,7 @@ public class StageManager : MonoBehaviour
         EnemySpawner.GetComponent<EnemySpawner>().SpawnEnemies();
         GameObject boss = Instantiate(BossPrefab[StageNum - 1]);
         boss.transform.position = new Vector2(20, -0.4f);
+        ChangeBackground();
     }
     private IEnumerator PopupStageNum_Coroutine()
     {
@@ -55,5 +57,43 @@ public class StageManager : MonoBehaviour
         PopupStageNum.gameObject.SetActive (true);
         yield return new WaitForSeconds(3);
         PopupStageNum.gameObject.SetActive (false);
+    }
+
+    private void ChangeBackground()
+    {
+        if (StageNum == 0)
+        {
+            return;
+        }
+        int num = StageNum % 4 - 1;
+        DisableBackGround();
+        Backgrounds[num].SetActive(true);
+        ChangeUIColor();
+    }
+    private void DisableBackGround()
+    {
+        foreach (GameObject g in Backgrounds)
+        {
+            g.SetActive (false);
+        }
+    }
+    private void ChangeUIColor()
+    {
+        if (Backgrounds[0].activeInHierarchy)
+        {
+            UI_Stat.color = new Color32(171, 148, 122, 255);
+        }
+        else if (Backgrounds[1].activeInHierarchy)
+        {
+            UI_Stat.color = new Color32(151, 107, 107, 255);
+        }
+        else if (Backgrounds[2].activeInHierarchy)
+        {
+            UI_Stat.color = new Color32(98, 85, 101, 255);
+        }
+        else if (Backgrounds[3].activeInHierarchy)
+        {
+            UI_Stat.color = new Color32(127, 112, 138, 255);
+        }
     }
 }

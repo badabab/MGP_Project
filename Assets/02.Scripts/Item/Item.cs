@@ -42,8 +42,10 @@ public class Item : MonoBehaviour
                 other.GetComponent<PlayerWeapon>().PowerItem();
             }
             this.gameObject.SetActive(false);
-        }
-
+        }       
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
         if (other.gameObject.CompareTag("Ground"))
         {
             this.gameObject.SetActive(false);

@@ -29,9 +29,4 @@ public class Background : MonoBehaviour
             Material.mainTextureOffset += dir * ScrollSpeed * Time.deltaTime;
         }      
     }
-
-    public void ChangeBackground()
-    {
-
-    }
 }

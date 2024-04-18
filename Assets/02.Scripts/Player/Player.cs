@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     {
         if (HP <= 0)
         {
+            HP = 0;
             GameManager.Instance.GameOver();
         }
         if (XP >= MaxXP)
