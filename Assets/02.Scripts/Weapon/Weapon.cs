@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
 
         else if (Wtype == WeaponType.Arrow)
         {
-            transform.Translate(Vector3.right * 2 * Time.deltaTime);
+            transform.Translate(Vector3.right * 3 * Time.deltaTime);
         }
         
         _timer += Time.deltaTime;
@@ -45,12 +45,9 @@ public class Weapon : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Wtype == WeaponType.Arrow)
+        if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
         {
-            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
-            {
-                gameObject.SetActive(false);
-            }
-        }       
+            SoundManager.instance.PlaySfx(SoundManager.Sfx.Attack);
+        }
     }
 }

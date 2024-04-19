@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator LevelUP_Coroutine()
     {
+        SoundManager.instance.PlaySfx(SoundManager.Sfx.LevelUP);
         LevelUP.gameObject.SetActive(true);
         yield return new WaitForSeconds(2);
         LevelUP.gameObject.SetActive(false);

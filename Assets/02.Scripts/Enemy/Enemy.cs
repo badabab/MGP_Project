@@ -148,6 +148,13 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator Damaged_Coroutine()
     {
+        if (HP <= 0)
+        {
+            _player.GetComponent<Player>().XP += 1;
+            _player.GetComponent<Player>().Score += EnemyScore;
+            gameObject.SetActive(false);
+        }
+
         _rb.AddForce(transform.right * KnockbackForce, ForceMode2D.Impulse);
 
         float elapsedTime = 0f;
@@ -164,13 +171,7 @@ public class Enemy : MonoBehaviour
 
         _spriteRenderer.color = new Color(1, 1, 1, 1f);
         _rb.velocity = Vector2.zero;
-        _damaged = false;
-        if (HP <= 0)
-        {
-            _player.GetComponent<Player>().XP += 1;
-            _player.GetComponent<Player>().Score += EnemyScore;
-            gameObject.SetActive(false);
-        }
+        _damaged = false;      
     }
 
     public void IceItem()
@@ -194,6 +195,7 @@ public class Enemy : MonoBehaviour
         {
             if (_isGround)
             {
+                jumpForce = Random.Range(3, 7);
                 _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
                 _isGround = false;
             }

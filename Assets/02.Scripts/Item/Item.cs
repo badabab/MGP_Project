@@ -22,6 +22,7 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundManager.instance.PlaySfx(SoundManager.Sfx.Item);
             if (IType == ItemType.Star)
             {
                 other.GetComponent<Player>().Score += StarScore;

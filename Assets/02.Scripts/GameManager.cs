@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        SoundManager.instance.PlayBgm(SoundManager.Bgm.BGM);
         OptionUI.Close();
         Time.timeScale = 1f;
         StartCoroutine(Start_Coroutine());
