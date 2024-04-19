@@ -7743,7 +7743,7 @@ MonoBehaviour:
   WindWeaponLevel: 0
   FireWeaponLevel: 0
   ArrowWeaponLevel: 0
-  CurrentWeaponDamage: 0
+  CurrentWeaponDamage: 5
   WindWeaponDamage: 5
   FireWeaponDamage: 5
   ArrowWeaponDamage: 5

@@ -25,6 +25,7 @@ public class UI_OptionPopup : MonoBehaviour
     public void OnRestartButtonClicked()
     {
         //Debug.Log("다시하기");
+        SoundManager.instance.StopBgm();
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
